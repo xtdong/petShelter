@@ -6,3 +6,25 @@ VagrantFile
 bower_components/
 node_modules
 package-lock.json
+
+
+server {
+    listen 80;
+    location / {
+        proxy_pass http://172.31.36.194:/var/www/petShelter;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+sudo ln -s /etc/nginx/sites-available/petShelter /etc/nginx/sites-enabled/petShelter
+
+sudo chown -R ubuntu petShelter
+
+echo "deb [ arch=amd64,arm64 ] <a href="https://repo.mongodb.org/apt/ubuntu">https://repo.mongodb.org/apt/ubuntu</a> xenial/mongodb-org/3.6 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.6.list
+echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/4.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.0.list
+
+Problems:
+- npm install (we used sudo)

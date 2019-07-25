@@ -6,7 +6,7 @@ module.exports = {
 
     index: function (req, res) {
         // res.render('index');//index ejs
-        res.sendFile(__dirname + 'index.html')
+        // res.sendFile(__dirname + 'index.html')
     },
 
     addNewPet: function (req, res) {
