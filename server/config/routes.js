@@ -3,9 +3,9 @@ var path = require('path');
 
 module.exports = function (app) {
 
-    // app.get('/', function (req, res) {
-    //     controller.index(req, res)
-    // })
+    app.get('/', function (req, res) {
+        res.sendFile(path.resolve('/public/dist/public/index.html'));
+    })
 
     app.post('/addPet', function (req, res) {
         controller.addNewPet(req, res)
