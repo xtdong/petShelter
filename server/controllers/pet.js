@@ -4,11 +4,6 @@ var Pet = require('../models/models').Pet
 
 module.exports = {
 
-    index: function (req, res) {
-        // res.render('index');//index ejs
-        // res.sendFile(__dirname + 'index.html')
-    },
-
     addNewPet: function (req, res) {
         console.log('controller')
         var newPet = new Pet()
