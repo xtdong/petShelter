@@ -1,0 +1,57 @@
+<!-- start add New -->
+<div>
+    <div class="col-md-8 m-auto">
+        <h2>Add a Pet</h2>
+
+        <!-- new pet form -->
+        <div *ngIf="messageShow.length >0" class="alert alert-danger small">
+            {{messageShow}}
+        </div>
+        <div *ngIf="messageShow.errors" class="alert alert-danger small">
+            <div *ngFor="let error of messageShow.errors | keyvalue" class="">
+                {{error.value.message}}
+            </div>
+        </div>
+        <form (submit)="addNewPet()">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" name="newPet.name" [(ngModel)]="newPet.name" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="type">Type</label>
+                <input type="text" name="newPet.type" [(ngModel)]="newPet.type" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea name="newPet.description" [(ngModel)]="newPet.description" class="form-control" cols="10"
+                    rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="url">URL</label>
+                <input type="text" name="newPet.url" [(ngModel)]="newPet.url" class="form-control" />
+            </div>
+            <label for="">Skills</label>
+            <div class="row p-2">
+                <div class="form-group col-md-4">
+                    <label for="skill1">Skill1</label>
+                    <input type="text" name="newPet.skills[0]" [(ngModel)]="newPet.skills[0]" class="form-control" />
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="skill2">Skill2</label>
+                    <input type="text" name="newPet.skills[1]" [(ngModel)]="newPet.skills[1]" class="form-control" />
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="skill3">Skill3</label>
+                    <input type="text" name="newPet.skills[2]" [(ngModel)]="newPet.skills[2]" class="form-control" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Add a Pet" class="btn btn-primary" />
+                <button class="btn btn-warning ml-2" [routerLink]="['']"> Cancal </button>
+            </div>
+
+        </form>
+        <!-- end new pet form -->
+    </div>
+</div>
