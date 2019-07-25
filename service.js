@@ -19,3 +19,7 @@ require('./server/config/routes.js')(app)
 app.listen(8800, function () {
     console.log("listening on port belt 8800");
 })
+
+app.all("*", (req, res, next) => {
+    res.sendFile(path.resolve("./public/dist/public/index.html"))
+});
